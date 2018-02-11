@@ -5,10 +5,10 @@ function [] = make()
                       
     %install datasets
     disp('Downloading datasets:');
-    %install_datasets();
+    install_datasets();
     %install classifiers
     disp('Downloading and installing classifiers:');
-    %install_classifiers(build_mex);
+    install_classifiers(build_mex);
     %install libs
     disp('Downloading and installing libraries:');
     install_libs(build_mex);
