@@ -6,22 +6,22 @@ function out_map = Super_MRF(probs,img,numSupPix,Xvalid,Yvalid)
     best_perf = -inf;    
     
     [segments,adj] = segment_hyp(img, numSupPix);
-	num_segments = max(segments(:));
+    num_segments = max(segments(:));
     node_prob = zeros(num_segments,nclass);
-	for j = 1:num_segments
-	    node_idx = segments(:)==j;
-	    node_prob(j,:) = mean(probs(node_idx,:),1);
-	end
+    for j = 1:num_segments
+        node_idx = segments(:)==j;
+	node_prob(j,:) = mean(probs(node_idx,:),1);
+    end
     param1 = [0.01, 0.1, 1, 10];
-	for j = 1:length(param1)
+    for j = 1:length(param1)
         y = apply_MRF(node_prob,adj, param1(j));
-	    y_map = zeros(nrows,ncols);
-	    for p = 1:num_segments
-	        y_map(segments(:)==p) = y(p);
-	    end
+	y_map = zeros(nrows,ncols);
+	for p = 1:num_segments
+	    y_map(segments(:)==p) = y(p);
+	end
     	Yout = y_map( sub2ind(size(y_map),Xvalid(:,1),Xvalid(:,2)) );
         perf = sum(Yout==Yvalid) / length(Yout); 
-	    if perf > best_perf
+	if perf > best_perf
 	        out_map = y_map;
 	        best_perf = perf;
         end
