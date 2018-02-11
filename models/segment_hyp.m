@@ -8,12 +8,12 @@ function [segment,adj] = segment_hyp(img, numSupPixels)
     
     segment = double(vl_slic(img, round(sqrt((nrows*ncols)/numSupPixels)), spatialPara,'MinRegionSize',9));
     segment_img = zeros(size(segment));
-	segment_idx = unique(segment);
-	for k = 1:length(segment_idx)
-	     segment_img(segment==segment_idx(k)) = k;
-	end
-	segment = segment_img;
-	adj = make_graph(segment);
+    segment_idx = unique(segment);
+    for k = 1:length(segment_idx)
+        segment_img(segment==segment_idx(k)) = k;
+    end
+    segment = segment_img;
+    adj = make_graph(segment);
 end
 
 
