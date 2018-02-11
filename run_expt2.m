@@ -52,29 +52,29 @@ for t = 1:length(numTrainEgL)
     result = cell(1,numOfTrials);
     for i = 1:numOfTrials
         XtrainC = [];
-   	    Ytrain = [];
+   	Ytrain = [];
     	XtestC = [];
     	Ytest = [];
     	XvalidC = [];
     	Yvalid = [];
  
     	for j = 1:numOfLabels
-             [r,c] = find( groundTruth==j);
-    	     numOfDataPts = length(r);
-	         idx = randperm(numOfDataPts,numTestEg+numTrainEg);
-	         r = r(idx); c = c(idx);	
-             [train_val, test] = crossvalind('LeaveMOut', length(r), numTestEg);
-	         test = find(test);
-	         train_val = find(train_val);
-	         XtestC = [XtestC; [r(test),c(test)] ];
-	         Ytest = [Ytest; j*ones(length(test),1)];	
-	         train = train_val(1:round(.7*numTrainEg));
-	         valid = train_val((round(.7*numTrainEg)+1):end);
-	         XtrainC = [XtrainC; [r(train),c(train)] ];
-	         Ytrain = [Ytrain; j*ones(length(train),1)];	
-	         XvalidC = [XvalidC; [r(valid),c(valid)] ];
-	         Yvalid = [Yvalid; j*ones(length(valid),1)];
-	     end
+            [r,c] = find( groundTruth==j);
+    	    numOfDataPts = length(r);
+	    idx = randperm(numOfDataPts,numTestEg+numTrainEg);
+	    r = r(idx); c = c(idx);	
+            [train_val, test] = crossvalind('LeaveMOut', length(r), numTestEg);
+	    test = find(test);
+	    train_val = find(train_val);
+	    XtestC = [XtestC; [r(test),c(test)] ];
+	    Ytest = [Ytest; j*ones(length(test),1)];	
+	    train = train_val(1:round(.7*numTrainEg));
+	    valid = train_val((round(.7*numTrainEg)+1):end);
+	    XtrainC = [XtrainC; [r(train),c(train)] ];
+	    Ytrain = [Ytrain; j*ones(length(train),1)];	
+	    XvalidC = [XvalidC; [r(valid),c(valid)] ];
+	    Yvalid = [Yvalid; j*ones(length(valid),1)];
+	end
 
         %features
         for j = 1:length(features)
