@@ -20,38 +20,38 @@ end
 
 
 function pred = MRFpred(probs, adj, beta, img, alpha)
-if nargin > 3
-     useFeatures = true;
-else
-     useFeatures = false;
-end
+    if nargin > 3
+         useFeatures = true;
+    else
+         useFeatures = false;
+    end
 
 
-[nRows, nCols, nClasses] = size(probs);
-nodePot = reshape(probs, [nRows*nCols, nClasses]);
+    [nRows, nCols, nClasses] = size(probs);
+    nodePot = reshape(probs, [nRows*nCols, nClasses]);
 
-if useFeatures
-    [nRows, nCols, nBands] = size(img);
-    spectra = reshape(img, [nRows*nCols, nBands]);
-end
+    if useFeatures
+        [nRows, nCols, nBands] = size(img);
+        spectra = reshape(img, [nRows*nCols, nBands]);
+    end
 
 
-edgeStruct = UGM_makeEdgeStruct(adj,nClasses,0); %third argument=1 => use mex
+    edgeStruct = UGM_makeEdgeStruct(adj,nClasses,0); %third argument=1 => use mex
 
-edgePot = zeros(nClasses,nClasses,edgeStruct.nEdges);
-for e = 1:edgeStruct.nEdges
-   n1 = edgeStruct.edgeEnds(e,1);
-   n2 = edgeStruct.edgeEnds(e,2);    
-   if ~useFeatures 
-       diffPot = beta;
-   else
-       diffPot = beta* exp(-(1-pdist( spectra([n1,n2],:) ,'cosine'))/alpha);
-   end
-   edgePot(:,:,e) = exp(-diffPot*(1-eye(nClasses)));
-end
+    edgePot = zeros(nClasses,nClasses,edgeStruct.nEdges);
+    for e = 1:edgeStruct.nEdges
+        n1 = edgeStruct.edgeEnds(e,1);
+        n2 = edgeStruct.edgeEnds(e,2);    
+        if ~useFeatures 
+            diffPot = beta;
+        else
+            diffPot = beta* exp(-(1-pdist( spectra([n1,n2],:) ,'cosine'))/alpha);
+        end
+        edgePot(:,:,e) = exp(-diffPot*(1-eye(nClasses)));
+    end
 
-pred = double(UGM_Decode_AlphaExpansion(nodePot,edgePot,edgeStruct));
-pred = reshape(pred, [nRows,nCols]);
+    pred = double(UGM_Decode_AlphaExpansion(nodePot,edgePot,edgeStruct));
+    pred = reshape(pred, [nRows,nCols]);
 
 end
 
