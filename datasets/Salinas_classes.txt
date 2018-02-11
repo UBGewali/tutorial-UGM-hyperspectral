@@ -1,0 +1,16 @@
+Brocoli_green_weeds_1
+Brocoli_green_weeds_2
+Fallow
+Fallow_rough_plow
+Fallow_smooth
+Stubble
+Celery
+Grapes_untrained
+Soil_vinyard_develop
+Corn_senesced_green_weeds
+Lettuce_romaine_4wk
+Lettuce_romaine_5wk
+Lettuce_romaine_6wk
+Lettuce_romaine_7wk
+Vinyard_untrained
+Vinyard_vertical_trellis

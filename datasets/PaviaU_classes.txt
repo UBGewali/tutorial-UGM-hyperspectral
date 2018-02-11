@@ -1,0 +1,9 @@
+Asphalt
+Meadows
+Gravel
+Trees
+Painted metal sheets	
+Bare Soil
+Bitumen
+Self-Blocking Bricks
+Shadows
