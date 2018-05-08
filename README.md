@@ -2,7 +2,7 @@
 
 This repository contains MATLAB code to reproduce the results in 
 
-U. B. Gewali and S. T. Monteiro. "A tutorial on modelling and inference in undirected graphical models for hyperspectral image analysis." International Journal of Remote Sensing (2018): 1-40. [[article](https://www.tandfonline.com/doi/abs/10.1080/01431161.2018.1465614)][[bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:eZqZJ1fu7x0J:scholar.google.com/&output=citation&scisig=AAGBfm0AAAAAWvGTARlBClDxj21HPSIquvz8XXSVqjdd&scisf=4&ct=citation&cd=-1&hl=en)][[preprint](https://arxiv.org/abs/1801.08268)]
+U. B. Gewali and S. T. Monteiro. "A tutorial on modelling and inference in undirected graphical models for hyperspectral image analysis." International Journal of Remote Sensing (2018): 1-40. [[article](https://www.tandfonline.com/doi/abs/10.1080/01431161.2018.1465614)][[bibtex](citation.bib)][[preprint](https://arxiv.org/abs/1801.08268)]
 
 ## Usage
 
